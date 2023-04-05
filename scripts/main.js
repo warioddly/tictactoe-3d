@@ -1,5 +1,5 @@
 
-import {TicTacToe} from "./lib/TicTacToe";
+import {TicTacToe} from "./lib/TicTacToe.js";
 
 console.log('INITIAL PROJECT');
 
