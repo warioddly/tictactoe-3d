@@ -1,7 +1,7 @@
 
 import {TicTacToe} from "./lib/TicTacToe.js";
 
-console.log('INITIAL PROJECT');
+console.log('INITIAL TIC TAC TOE');
 
 window.addEventListener('DOMContentLoaded', initCustomCursor);
 function initCustomCursor() {
