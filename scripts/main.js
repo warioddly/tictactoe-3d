@@ -3,7 +3,7 @@ import {TicTacToe} from "./lib/TicTacToe.js";
 
 console.log('INITIAL TIC TAC TOE');
 
-window.addEventListener('DOMContentLoaded', initCustomCursor);
+// window.addEventListener('DOMContentLoaded', initCustomCursor);
 function initCustomCursor() {
     const cursor = document.querySelector("#cursor");
     const cursorBorder = document.querySelector("#cursor-border");

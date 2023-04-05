@@ -1,6 +1,7 @@
 {
   "name": "tictactoe-3d",
   "dependencies": {
+    "gsap": "^3.11.5",
     "three": "^0.151.3"
   },
   "devDependencies": {
@@ -8,6 +9,7 @@
   },
   "version": "1.0.0",
   "scripts": {
+    "run": "parcel index.html",
     "build": "parcel build ./index.html --out-dir dist --public-url ./ --no-minify",
     "deploy": "npm run build && gh-pages -d dist"
   }
