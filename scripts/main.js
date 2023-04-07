@@ -51,3 +51,5 @@ function initCustomCursor() {
 window.onload = () => {
     const ticTacToe = new TicTacToe();
 }
+
+

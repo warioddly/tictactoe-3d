@@ -18,10 +18,10 @@ export class TicTacToe {
 
         this.camera.position.set(0, 10, 0);
 
-        this.camera.position.z = 7;
-
         this.onWindowResize();
 
+
+        this.group = new THREE.Group();
 
         const planeMesh = new THREE.Mesh(
             new THREE.PlaneGeometry(3, 3),
@@ -30,11 +30,12 @@ export class TicTacToe {
                 visible: false
             })
         );
+
         planeMesh.rotateX(-Math.PI / 2);
         this.scene.add(planeMesh);
 
-        const grid = new THREE.GridHelper(3, 3);
-        this.scene.add(grid);
+        this.grid = new THREE.GridHelper(3, 3);
+        this.scene.add(this.grid);
 
         const highlightMesh = new THREE.Mesh(
             new THREE.PlaneGeometry(1, 1),
@@ -42,21 +43,29 @@ export class TicTacToe {
                 side: THREE.DoubleSide,
                 transparent: true
             })
+
         );
         highlightMesh.rotateX(-Math.PI / 2);
-        highlightMesh.position.set(1, 0, 1);
+        highlightMesh.position.set(1, 0, 0);
         this.scene.add(highlightMesh);
 
+        // this.group.add(highlightMesh);x
+        // this.group.add(planeMesh);
+        // this.group.add(this.grid);
+
+        // this.scene.add(this.group);
 
         let intersects;
 
         const that = this;
 
         window.addEventListener('mousemove', function(e) {
+
             that.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
             that.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
             that.raycaster.setFromCamera(that.mouse, that.camera);
             intersects = that.raycaster.intersectObject(planeMesh);
+
             if(intersects.length > 0) {
                 const intersect = intersects[0];
                 const highlightPos = new THREE.Vector3().copy(intersect.point).floor().addScalar(1);
@@ -118,7 +127,7 @@ export class TicTacToe {
 
         requestAnimationFrame( this.animate.bind(this) );
 
-        // gsap.to(this.group.rotation, { duration: 1.0, x: this.mouse.y / 1000, y: this.mouse.x / 1000 });
+        // gsap.to(this.group.rotation, { duration: .5, x: this.mouse.y / 1000, y: this.mouse.x / 1000 });
 
         this.renderer.render( this.scene, this.camera );
 
